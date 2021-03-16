@@ -1,4 +1,4 @@
-name: CI
+name: Android build
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  android_build:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,10 +17,11 @@ jobs:
       with:
         java-version: '11'
 
-    - name: ci
+    - name: gradlew
       run: bash ./gradlew clean build test --stacktrace
 
     - uses: actions/upload-artifact@v2
+      if: always()
       with:
         name: apk_aar
         path: |
