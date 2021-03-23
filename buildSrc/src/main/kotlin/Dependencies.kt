@@ -1,21 +1,20 @@
 private object Versions {
     // Libraries
-    const val androidToolsBuildGradle = "4.2.0-beta06"
+    const val androidToolsBuildGradle = "4.2.0-rc01"
     const val desugar = "1.1.5"
-    const val kotlin = "1.4.31"
+    const val kotlin = "1.5.0-M2"
     const val kotlinxCoroutines = "1.4.3"
     const val kotlinxSerialization = "1.1.0"
-    const val navigation = "2.3.4"
+    const val navigation = "2.3.5"
     const val material = "1.3.0"
     const val androidJunit5 = "1.7.1.1"
-    const val googleServices = "4.3.5"
-    const val koin = "3.0.1-beta-1"
+    const val koin = "3.0.1-beta-2"
 }
 
 object PublicVersions {
     const val kotlin = Versions.kotlin
     const val ktlint = "0.40.0"
-    const val detekt = "1.15.0"
+    const val detekt = "1.16.0"
 }
 
 object BuildVersions {
@@ -50,5 +49,4 @@ object GradlePlugin {
         "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
     const val androidJunit5Plugin =
         "de.mannodermaus.gradle.plugins:android-junit5:${Versions.androidJunit5}"
-    const val googleServicePlugin = "com.google.gms:google-services:${Versions.googleServices}"
 }
