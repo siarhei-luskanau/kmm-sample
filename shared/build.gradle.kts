@@ -2,10 +2,23 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
     kotlin("multiplatform")
+    kotlin("plugin.serialization")
     id("com.android.library")
+    id("com.chromaticnoise.multiplatform-swiftpackage") version PublicVersions.multiplatformSwiftpackage
 }
 
+version = "1.0.0"
+
 kotlin {
+    multiplatformSwiftPackage {
+        packageName("KotlinMultiplatformSPExample")
+        swiftToolsVersion("5.3")
+        targetPlatforms {
+            iOS { v("11") }
+        }
+        outputDirectory(File(buildDir, "spm"))
+    }
+
     android()
     ios {
         binaries {
@@ -15,7 +28,11 @@ kotlin {
         }
     }
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation(Libraries.kotlinxSerializationJson)
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))

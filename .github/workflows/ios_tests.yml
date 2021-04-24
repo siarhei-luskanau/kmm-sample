@@ -15,12 +15,13 @@ jobs:
 
     - uses: actions/checkout@v2
 
-    - uses: actions/setup-java@v1
+    - uses: actions/setup-java@v2
       with:
-        java-version: '11'
+        distribution: 'zulu'
+        java-version: '15'
 
     - name: gradlew
-      run: ./gradlew packForXcode
+      run: ./gradlew packForXcode createSwiftPackage --stacktrace
 
     - name: xcodebuild
       run: xcodebuild -project "iosApp/iosApp.xcodeproj" -scheme iosApp test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8' | xcpretty
@@ -30,3 +31,10 @@ jobs:
       with:
         name: tests.xcresult
         path: /Users/runner/Library/Developer/Xcode/DerivedData/*/Logs/Test/*.xcresult
+
+    - uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: spm
+        path: |
+          shared/build/spm/**.*zip

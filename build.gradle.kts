@@ -6,6 +6,7 @@ buildscript {
     dependencies {
         classpath(GradlePlugin.kotlinGradlePlugin)
         classpath(GradlePlugin.androidToolsBuildGradle)
+        classpath(GradlePlugin.kotlinSerializationPlugin)
     }
 }
 
