@@ -15,6 +15,7 @@ allprojects {
         google()
         mavenCentral()
     }
+    apply(from = "$rootDir/ktlint.gradle.kts")
 }
 
 tasks.register("clean").configure {

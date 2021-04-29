@@ -1,14 +1,14 @@
 private object Versions {
     // Libraries
-    const val androidToolsBuildGradle = "4.2.0-rc01"
-    const val desugar = "1.1.5"
-    const val kotlin = "1.5.0"
-    const val kotlinxCoroutines = "1.4.3"
-    const val kotlinxSerialization = "1.1.0"
-    const val navigation = "2.3.5"
+    const val androidToolsBuildGradle = "4.2.1"
+    const val kotlin = "1.5.10"
+    const val kotlinxCoroutines = "1.5.0-native-mt"
+    const val kotlinxSerialization = "1.2.1"
     const val material = "1.3.0"
-    const val androidJunit5 = "1.7.1.1"
-    const val koin = "3.0.1"
+    const val koin = "3.0.2"
+
+    // test instrumentation
+    const val androidTestCore = "1.4.0-alpha06"
 }
 
 object PublicVersions {
@@ -23,32 +23,30 @@ object BuildVersions {
     const val compileSdkVersion = platformVersion
     const val targetSdkVersion = 30
     const val buildToolsVersion = "30.0.3"
-    const val cmdlineToolsVersion = "3.0"
     const val minSdkVersion = 24
 }
 
 object Libraries {
-    const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:${Versions.desugar}"
     const val kotlinStdlibJdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
     const val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
     const val kotlinxCoroutinesCore =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinxCoroutines}"
     const val kotlinxSerializationJson =
         "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.kotlinxSerialization}"
-    const val navigationFragmentKtx =
-        "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
-    const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     const val material = "com.google.android.material:material:${Versions.material}"
     const val koinAndroid = "io.insert-koin:koin-android:${Versions.koin}"
+    const val koinCore = "io.insert-koin:koin-core:${Versions.koin}"
+}
+
+object TestLibraries {
+    const val androidTestCoreKtx = "androidx.test:core-ktx:${Versions.androidTestCore}"
+    const val koinTest = "io.insert-koin:koin-test:${Versions.koin}"
 }
 
 object GradlePlugin {
     const val androidToolsBuildGradle =
         "com.android.tools.build:gradle:${Versions.androidToolsBuildGradle}"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-    const val kotlinSerializationPlugin = "org.jetbrains.kotlin:kotlin-serialization:${Versions.kotlin}"
-    const val navigationSafeArgsGradlePlugin =
-        "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
-    const val androidJunit5Plugin =
-        "de.mannodermaus.gradle.plugins:android-junit5:${Versions.androidJunit5}"
+    const val kotlinSerializationPlugin =
+        "org.jetbrains.kotlin:kotlin-serialization:${Versions.kotlin}"
 }

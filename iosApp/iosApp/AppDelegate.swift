@@ -1,4 +1,5 @@
 import UIKit
+import shared
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -7,6 +8,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        startKoin()
+
         return true
     }
 
@@ -27,3 +31,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+func startKoin() {
+    // You could just as easily define all these dependencies in Kotlin, but this helps demonstrate how you might pass platform-specific dependencies in a larger scale project where declaring them in Kotlin is more difficult, or where they're also used in iOS-specific code.
+
+    let bundle = Bundle.main
+
+    let koinApplication = KoinIOSKt.doInitKoinIos(bundle: bundle)
+    _koin = koinApplication.koin
+}
+
+private var _koin: Koin_coreKoin? = nil
+var koin: Koin_coreKoin {
+    return _koin!
+}

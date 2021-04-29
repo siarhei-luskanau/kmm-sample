@@ -31,6 +31,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(Libraries.kotlinxSerializationJson)
+                implementation(Libraries.koinCore)
             }
         }
         val commonTest by getting {
@@ -47,13 +48,24 @@ kotlin {
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
-                implementation("junit:junit:4.13.1")
+                implementation("androidx.test:runner:1.3.0")
+                implementation(TestLibraries.androidTestCoreKtx)
             }
         }
         val iosMain by getting
         val iosTest by getting
     }
 }
+
+tasks.withType(AbstractTestTask::class.java) {
+    println("AbstractTestTask : $this")
+    testLogging.events = setOf(
+        org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED,
+        org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED,
+        org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
+    )
+}
+
 android {
     compileSdkVersion(BuildVersions.compileSdkVersion)
     buildToolsVersion = BuildVersions.buildToolsVersion
@@ -61,6 +73,7 @@ android {
     defaultConfig {
         minSdkVersion(BuildVersions.minSdkVersion)
         targetSdkVersion(BuildVersions.targetSdkVersion)
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         getByName("release") {
@@ -68,12 +81,14 @@ android {
         }
     }
 }
+
 val packForXcode by tasks.creating(Sync::class) {
     group = "build"
     val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
     val sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
     val targetName = "ios" + if (sdkName.startsWith("iphoneos")) "Arm64" else "X64"
-    val framework = kotlin.targets.getByName<KotlinNativeTarget>(targetName).binaries.getFramework(mode)
+    val framework =
+        kotlin.targets.getByName<KotlinNativeTarget>(targetName).binaries.getFramework(mode)
     inputs.property("mode", mode)
     dependsOn(framework.linkTask)
     val targetDir = File(buildDir, "xcode-frameworks")

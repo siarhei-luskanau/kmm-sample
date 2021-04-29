@@ -22,5 +22,6 @@ android {
 
 dependencies {
     implementation(project(":shared"))
+    implementation(Libraries.koinAndroid)
     implementation(Libraries.material)
 }

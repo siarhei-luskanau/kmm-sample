@@ -3,7 +3,7 @@ import shared
 
 struct ContentView: View {
     let calculator = Calculator.Companion()
-    let greet = Greeting().greeting()
+    let projectService = (koin.get(objCClass: ProjectService.self) as! ProjectService)
     
     @State private var firstNum: String = "0"
     @State private var secondNum: String = "0"
@@ -17,7 +17,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            Text(greet)
+            Text(projectService.getProject()?.language ?? "no Project")
             HStack(alignment: .center) {
                 TextField("A", text: $firstNum)
                     .keyboardType(.numberPad)
