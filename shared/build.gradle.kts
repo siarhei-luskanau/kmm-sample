@@ -48,7 +48,12 @@ kotlin {
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
-                implementation("androidx.test:runner:1.3.0")
+            }
+        }
+       val androidAndroidTest by getting {
+            dependencies {
+                implementation(kotlin("test-junit"))
+                implementation(TestLibraries.androidTestRunner)
                 implementation(TestLibraries.androidTestCoreKtx)
             }
         }

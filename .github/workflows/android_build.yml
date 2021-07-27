@@ -15,7 +15,7 @@ jobs:
           distribution: 'adopt'
           java-version: '15'
 
-      - run: bash ./gradlew clean ktlintCheck --stacktrace
+      - run: bash ./gradlew clean ktlintCheck detekt lint --stacktrace
 
 
   jobUnitTest:

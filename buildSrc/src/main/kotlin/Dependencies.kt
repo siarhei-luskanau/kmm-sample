@@ -1,28 +1,28 @@
 private object Versions {
     // Libraries
-    const val androidToolsBuildGradle = "4.2.1"
-    const val kotlin = "1.5.10"
-    const val kotlinxCoroutines = "1.5.0-native-mt"
-    const val kotlinxSerialization = "1.2.1"
-    const val material = "1.3.0"
-    const val koin = "3.0.2"
+    const val androidToolsBuildGradle = "7.0.0"
+    const val kotlin = "1.5.21"
+    const val kotlinxCoroutines = "1.5.1-native-mt"
+    const val kotlinxSerialization = "1.2.2"
+    const val material = "1.4.0"
+    const val koin = "3.1.2"
 
     // test instrumentation
-    const val androidTestCore = "1.4.0-alpha06"
+    const val androidTestCore = "1.4.0"
 }
 
 object PublicVersions {
     const val kotlin = Versions.kotlin
-    const val ktlint = "0.40.0"
-    const val detekt = "1.16.0"
+    const val ktlint = "0.41.0"
+    const val detekt = "1.17.1"
     const val multiplatformSwiftpackage = "2.0.3"
 }
 
 object BuildVersions {
-    const val platformVersion = 30
+    const val platformVersion = 31
     const val compileSdkVersion = platformVersion
-    const val targetSdkVersion = 30
-    const val buildToolsVersion = "30.0.3"
+    const val targetSdkVersion = 31
+    const val buildToolsVersion = "30.0.0"
     const val minSdkVersion = 24
 }
 
@@ -39,6 +39,7 @@ object Libraries {
 }
 
 object TestLibraries {
+    const val androidTestRunner = "androidx.test:runner:${Versions.androidTestCore}"
     const val androidTestCoreKtx = "androidx.test:core-ktx:${Versions.androidTestCore}"
     const val koinTest = "io.insert-koin:koin-test:${Versions.koin}"
 }

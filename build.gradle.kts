@@ -10,12 +10,17 @@ buildscript {
     }
 }
 
+plugins {
+    id("io.gitlab.arturbosch.detekt").version(PublicVersions.detekt)
+}
+
 allprojects {
     repositories {
         google()
         mavenCentral()
     }
     apply(from = "$rootDir/ktlint.gradle.kts")
+    apply(plugin = "io.gitlab.arturbosch.detekt")
 }
 
 tasks.register("clean").configure {
