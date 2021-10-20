@@ -1,13 +1,13 @@
-package siarhei.luskanau.kmm.shared
+package siarhei.luskanau.kmm.android
 
 import com.jetbrains.kmm.shared.Calculator
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class SharedAndroidTest {
+class AppUnitTest {
 
     @Test
-    fun sharedAndroidTestSum() {
+    fun appUnitTestSum() {
         assertEquals(3, Calculator.sum(1, 2))
     }
 }

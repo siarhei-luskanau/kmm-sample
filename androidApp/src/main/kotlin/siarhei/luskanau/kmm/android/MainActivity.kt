@@ -6,7 +6,6 @@ import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.jetbrains.androidApp.R
 import com.jetbrains.kmm.shared.Calculator
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
