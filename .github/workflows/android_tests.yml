@@ -15,12 +15,13 @@ jobs:
           distribution: 'adopt'
           java-version: '15'
 
-      - uses: ReactiveCircus/android-emulator-runner@v2.20.0
+      - uses: ReactiveCircus/android-emulator-runner@v2.21.0
         with:
-          api-level: 28
-          target: default
+          api-level: 30
+          target: aosp_atd
           arch: x86
           profile: Nexus 6
+          channel: canary
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
           disable-animations: true
           script: ./gradlew connectedAndroidTest
