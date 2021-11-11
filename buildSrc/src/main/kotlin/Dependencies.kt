@@ -3,9 +3,9 @@ private object Versions {
     const val androidToolsBuildGradle = "7.0.3"
     const val kotlin = "1.5.31"
     const val kotlinxCoroutines = "1.5.2"
-    const val kotlinxSerialization = "1.3.0"
+    const val kotlinxSerialization = "1.3.1"
     const val material = "1.4.0"
-    const val koin = "3.1.2"
+    const val koin = "3.1.3"
 
     // test instrumentation
     const val androidTestCore = "1.4.0"
@@ -13,7 +13,7 @@ private object Versions {
 
 object PublicVersions {
     const val kotlin = Versions.kotlin
-    const val ktlint = "0.42.1"
+    const val ktlint = "0.43.0"
     const val detekt = "1.18.1"
     const val multiplatformSwiftpackage = "2.0.3"
 }
