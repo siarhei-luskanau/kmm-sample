@@ -1,9 +1,9 @@
 package siarhei.luskanau.kmm.android
 
 import androidx.test.platform.app.InstrumentationRegistry
-import com.jetbrains.kmm.shared.Calculator
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import siarhei.luskanau.kmm.shared.Calculator
 
 class AppAndroidTest {
 

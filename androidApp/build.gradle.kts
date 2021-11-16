@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion(BuildVersions.compileSdkVersion)
+    compileSdk = BuildVersions.compileSdkVersion
     buildToolsVersion = BuildVersions.buildToolsVersion
     defaultConfig {
-        minSdkVersion(BuildVersions.minSdkVersion)
-        targetSdkVersion(BuildVersions.targetSdkVersion)
+        minSdk = BuildVersions.minSdkVersion
+        targetSdk = BuildVersions.targetSdkVersion
         applicationId = "siarhei.luskanau.kmm.android"
         versionCode = 1
         versionName = "1.0"
@@ -29,15 +29,6 @@ android {
                 )
             }
         }
-//        emulatorSnapshots {
-//            enableForTestFailures = true
-//        }
-//        devices.create<com.android.build.api.dsl.ManagedVirtualDevice>("testEmulator28") {
-//            device = "Nexus 6"
-//            apiLevel = 28
-//            systemImageSource = "google"
-//            abi = "x86"
-//        }
     }
 }
 

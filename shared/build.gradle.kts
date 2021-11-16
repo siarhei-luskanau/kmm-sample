@@ -71,12 +71,12 @@ tasks.withType(AbstractTestTask::class.java) {
 }
 
 android {
-    compileSdkVersion(BuildVersions.compileSdkVersion)
+    compileSdk = BuildVersions.compileSdkVersion
     buildToolsVersion = BuildVersions.buildToolsVersion
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdkVersion(BuildVersions.minSdkVersion)
-        targetSdkVersion(BuildVersions.targetSdkVersion)
+        minSdk = BuildVersions.minSdkVersion
+        targetSdk = BuildVersions.targetSdkVersion
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

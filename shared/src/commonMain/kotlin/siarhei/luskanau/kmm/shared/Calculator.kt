@@ -1,4 +1,4 @@
-package com.jetbrains.kmm.shared
+package siarhei.luskanau.kmm.shared
 
 class Calculator {
     companion object {

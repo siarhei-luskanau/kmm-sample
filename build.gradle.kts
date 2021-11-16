@@ -14,6 +14,8 @@ plugins {
     id("io.gitlab.arturbosch.detekt").version(PublicVersions.detekt)
 }
 
+apply(from = "$rootDir/ci.gradle.kts")
+
 allprojects {
     repositories {
         google()

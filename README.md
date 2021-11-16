@@ -17,4 +17,5 @@ It's been demonstrated how KMM project can be covered by Unit tests and Android 
 
 CI process based on GitHub Actions. CI builds Android app, run unit tests, run Android tests on Emulator, run iOS test.
 
-## Screens
+## Presentation
+https://docs.google.com/presentation/d/1Z85DqLT8CaT27aPyAjup6BAxX6-XS7uL9UPuDWM6b5U

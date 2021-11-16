@@ -1,8 +1,7 @@
-package com.jetbrains.kmm.shared
+package siarhei.luskanau.kmm.shared
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import siarhei.luskanau.kmm.shared.ResourceReader
 
 class GreetingTest {
 

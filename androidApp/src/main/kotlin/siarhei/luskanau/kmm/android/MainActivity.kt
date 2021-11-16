@@ -6,9 +6,9 @@ import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.jetbrains.kmm.shared.Calculator
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import siarhei.luskanau.kmm.shared.Calculator
 import siarhei.luskanau.kmm.shared.data.ProjectService
 
 class MainActivity : AppCompatActivity(), KoinComponent {
