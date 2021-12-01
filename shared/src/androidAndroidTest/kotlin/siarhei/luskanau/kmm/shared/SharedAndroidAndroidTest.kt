@@ -11,11 +11,10 @@ class SharedAndroidAndroidTest {
     @Test
     fun successResourceReaderSharedAndroidAndroidTest() {
         val context = ApplicationProvider.getApplicationContext<Application>()
-        val actual = ResourceReader(context = context).readResource("data.json")
+        val actual = ResourceReader(context = context).readResource("test.json")
         assertEquals(
             expected = "{\n" +
-                "  \"name\": \"kotlinx.serialization\",\n" +
-                "  \"language\": \"Kotlin\"\n" +
+                "  \"test-key\": \"test-value\"\n" +
                 "}\n",
             actual = actual
         )
