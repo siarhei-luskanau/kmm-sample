@@ -18,13 +18,12 @@ fun initKoin(appModule: Module): KoinApplication =
 
 val sharedCommonModule = module {
     single {
-        JsonParser(
-            resourceReader = get(),
-        )
+        JsonParser()
     }
 
     single {
         ProjectService(
+            resourceReader = get(),
             jsonParser = get(),
         )
     }
