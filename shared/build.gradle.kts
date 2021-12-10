@@ -4,21 +4,11 @@ plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization")
     id("com.android.library")
-    id("com.chromaticnoise.multiplatform-swiftpackage") version PublicVersions.multiplatformSwiftpackage
 }
 
 version = "1.0.0"
 
 kotlin {
-    multiplatformSwiftPackage {
-        packageName("KotlinMultiplatformSPExample")
-        swiftToolsVersion("5.3")
-        targetPlatforms {
-            iOS { v("11") }
-        }
-        outputDirectory(File(buildDir, "spm"))
-    }
-
     android()
     ios {
         binaries {
