@@ -19,7 +19,9 @@ tasks.register("ciUnitTest") {
     doLast {
         gradlew(
             "clean",
-            "testDebugUnitTest",
+            "koverVerify",
+            "koverReport",
+            "koverMergedReport",
         )
     }
 }
@@ -37,10 +39,14 @@ tasks.register("ciBuildApp") {
 tasks.register("ciEmulator") {
     group = CI_GRADLE
     doLast {
-        gradlew(
-            "clean",
-            "connectedAndroidTest",
-        )
+        mutableListOf(
+            ":androidApp:executeScreenshotTests",
+            // "-PdirectorySuffix=$directorySuffix",
+        ).also {
+            if (System.getenv("CI").isNullOrEmpty()) it.add("-Precord")
+        }.also {
+            gradlew(*it.toTypedArray())
+        }
     }
 }
 

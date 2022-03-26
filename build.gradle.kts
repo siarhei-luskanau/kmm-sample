@@ -7,11 +7,13 @@ buildscript {
         classpath(GradlePlugin.kotlinGradlePlugin)
         classpath(GradlePlugin.androidToolsBuildGradle)
         classpath(GradlePlugin.kotlinSerializationPlugin)
+        classpath(GradlePlugin.karumiShotPlugin)
     }
 }
 
 plugins {
-    id("io.gitlab.arturbosch.detekt").version(PublicVersions.detekt)
+    id("io.gitlab.arturbosch.detekt") version PublicVersions.detekt
+    id("org.jetbrains.kotlinx.kover") version PublicVersions.kover
 }
 
 apply(from = "$rootDir/ci.gradle.kts")
@@ -27,4 +29,9 @@ allprojects {
 
 tasks.register("clean").configure {
     delete("build")
+}
+
+kover {
+    coverageEngine.set(kotlinx.kover.api.CoverageEngine.INTELLIJ)
+    // coverageEngine.set(kotlinx.kover.api.CoverageEngine.JACOCO)
 }

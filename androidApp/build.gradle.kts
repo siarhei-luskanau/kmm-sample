@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    id("shot")
 }
 
 android {
@@ -10,9 +11,10 @@ android {
         minSdk = BuildVersions.minSdkVersion
         targetSdk = BuildVersions.targetSdkVersion
         applicationId = "siarhei.luskanau.kmm.android"
+        testApplicationId = "siarhei.luskanau.kmm.android.test"
         versionCode = 1
         versionName = "1.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.karumi.shot.ShotTestRunner"
     }
     buildTypes {
         getByName("release") {
@@ -30,6 +32,12 @@ android {
             }
         }
     }
+    packagingOptions.excludes.addAll(
+        listOf(
+            "META-INF/AL2.0",
+            "META-INF/LGPL2.1",
+        )
+    )
 }
 
 dependencies {
