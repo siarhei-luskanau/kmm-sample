@@ -1,21 +1,21 @@
 private object Versions {
     // Libraries
     const val androidToolsBuildGradle = "7.1.3"
-    const val kotlin = "1.7.0-Beta"
-    const val kotlinxSerialization = "1.3.2"
-    const val material = "1.6.0"
-    const val koin = "3.1.6"
+    const val kotlin = "1.7.0"
+    const val kotlinxSerialization = "1.3.3"
+    const val material = "1.6.1"
+    const val koin = "3.2.0"
 
     // test instrumentation
     const val androidTestCore = "1.4.0"
-    const val karumiShot = "5.14.0"
+    const val karumiShot = "5.14.1"
 }
 
 object PublicVersions {
     const val kotlin = Versions.kotlin
     const val ktlint = "0.45.2"
     const val detekt = "1.20.0"
-    const val kover = "0.5.0"
+    const val kover = "0.5.1"
 }
 
 object BuildVersions {
