@@ -12,7 +12,7 @@ fun initKoin(appModule: Module): KoinApplication =
         modules(
             appModule,
             sharedCommonModule,
-            platformModule,
+            platformModule
         )
     }
 
@@ -24,7 +24,7 @@ val sharedCommonModule = module {
     single {
         ProjectService(
             resourceReader = get(),
-            jsonParser = get(),
+            jsonParser = get()
         )
     }
 }

@@ -11,7 +11,7 @@ class JsonParser {
 
     fun <T : Any> parseBySerializer(
         json: String,
-        serializer: KSerializer<T>,
+        serializer: KSerializer<T>
     ): T =
         parser.decodeFromString(serializer, json)
 }

@@ -1,8 +1,8 @@
 package siarhei.luskanau.kmm.shared
 
+import platform.Foundation.NSBundle
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import platform.Foundation.NSBundle
 
 class GreetingTest {
 
@@ -14,7 +14,7 @@ class GreetingTest {
                 "  \"name\": \"kotlinx.serialization\",\n" +
                 "  \"language\": \"${bundle}\"\n" +
                 "}\n",
-            actual = ResourceReader(bundle = bundle).readResource("data.json"),
+            actual = ResourceReader(bundle = bundle).readResource("data.json")
         )
     }
 }
