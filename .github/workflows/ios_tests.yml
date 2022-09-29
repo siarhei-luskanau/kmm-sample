@@ -16,8 +16,6 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
-      - run: bash ./gradlew packForXcode --stacktrace
-
       - run: xcodebuild -project "iosApp/iosApp.xcodeproj" -scheme iosApp test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8' | xcpretty
 
       - uses: actions/upload-artifact@v3

@@ -21,7 +21,6 @@ tasks.register("ciUnitTest") {
             "clean",
             "koverVerify",
             "koverReport",
-            "koverMergedReport",
         )
     }
 }

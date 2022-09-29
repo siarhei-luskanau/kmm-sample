@@ -1,10 +1,11 @@
 private object Versions {
     // Libraries
-    const val androidToolsBuildGradle = "7.3.0-beta05"
-    const val kotlin = "1.7.0"
-    const val kotlinxSerialization = "1.3.3"
+    const val androidToolsBuildGradle = "7.3.0"
+    const val kotlin = "1.7.20"
+    const val kotlinxCoroutines = "1.6.4"
+    const val kotlinxSerialization = "1.4.0"
     const val material = "1.6.1"
-    const val koin = "3.2.0"
+    const val koin = "3.2.2"
 
     // test instrumentation
     const val androidTestCore = "1.4.0"
@@ -13,20 +14,22 @@ private object Versions {
 
 object PublicVersions {
     const val kotlin = Versions.kotlin
-    const val ktlint = "0.46.1"
-    const val detekt = "1.20.0"
-    const val kover = "0.5.1"
+    const val ktlint = "0.47.1"
+    const val detekt = "1.21.0"
+    const val kover = "0.6.0"
 }
 
 object BuildVersions {
-    const val platformVersion = 32
+    const val platformVersion = 33
     const val compileSdkVersion = platformVersion
-    const val targetSdkVersion = 32
-    const val buildToolsVersion = "32.0.0"
+    const val targetSdkVersion = 33
+    const val buildToolsVersion = "33.0.0"
     const val minSdkVersion = 23
 }
 
 object Libraries {
+    const val kotlinxCoroutinesCore =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinxCoroutines}"
     const val kotlinxSerializationJson =
         "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.kotlinxSerialization}"
     const val material = "com.google.android.material:material:${Versions.material}"
