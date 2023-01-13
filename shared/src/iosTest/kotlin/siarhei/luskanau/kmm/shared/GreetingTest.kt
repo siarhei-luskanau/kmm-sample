@@ -1,8 +1,8 @@
 package siarhei.luskanau.kmm.shared
 
-import platform.Foundation.NSBundle
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import platform.Foundation.NSBundle
 
 class GreetingTest {
 

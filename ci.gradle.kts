@@ -9,7 +9,7 @@ tasks.register("ciLint") {
             "clean",
             "ktlintCheck",
             "detekt",
-            "lintDebug",
+            "lintDebug"
         )
     }
 }
@@ -20,7 +20,7 @@ tasks.register("ciUnitTest") {
         gradlew(
             "clean",
             "koverVerify",
-            "koverReport",
+            "koverReport"
         )
     }
 }
@@ -30,7 +30,7 @@ tasks.register("ciBuildApp") {
     doLast {
         gradlew(
             "clean",
-            "assembleDebug",
+            "assembleDebug"
         )
     }
 }
@@ -39,7 +39,7 @@ tasks.register("ciEmulator") {
     group = CI_GRADLE
     doLast {
         mutableListOf(
-            ":androidApp:executeScreenshotTests",
+            ":androidApp:executeScreenshotTests"
             // "-PdirectorySuffix=$directorySuffix",
         ).also {
             if (System.getenv("CI").isNullOrEmpty()) it.add("-Precord")
@@ -66,7 +66,6 @@ fun gradlew(vararg tasks: String, addToEnvironment: Map<String, String>? = null)
         println("commandLine: ${this.commandLine}")
     }.apply { println("ExecResult: $this") }
 }
-
 
 fun platformExecutable(name: String, ext: String = "exe"): String =
     if (Os.isFamily(Os.FAMILY_WINDOWS)) {

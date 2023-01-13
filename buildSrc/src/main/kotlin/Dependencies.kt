@@ -1,9 +1,9 @@
 private object Versions {
     // Libraries
-    const val androidToolsBuildGradle = "7.3.0"
-    const val kotlin = "1.7.20"
+    const val androidToolsBuildGradle = "7.4.0"
+    const val kotlin = "1.8.0"
     const val kotlinxCoroutines = "1.6.4"
-    const val kotlinxSerialization = "1.4.0"
+    const val kotlinxSerialization = "1.4.1"
     const val material = "1.6.1"
     const val koin = "3.2.2"
 
@@ -14,16 +14,16 @@ private object Versions {
 
 object PublicVersions {
     const val kotlin = Versions.kotlin
-    const val ktlint = "0.47.1"
-    const val detekt = "1.21.0"
-    const val kover = "0.6.0"
+    const val ktlint = "0.48.1"
+    const val detekt = "1.22.0"
+    const val kover = "0.6.1"
 }
 
 object BuildVersions {
     const val platformVersion = 33
     const val compileSdkVersion = platformVersion
     const val targetSdkVersion = 33
-    const val buildToolsVersion = "33.0.0"
+    const val buildToolsVersion = "33.0.1"
     const val minSdkVersion = 23
 }
 

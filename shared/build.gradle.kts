@@ -38,7 +38,7 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-       val androidAndroidTest by getting {
+        val androidAndroidTest by getting {
             dependencies {
                 implementation(kotlin("test"))
                 implementation(TestLibraries.androidTestRunner)
