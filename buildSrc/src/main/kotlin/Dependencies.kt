@@ -4,11 +4,11 @@ private object Versions {
     const val kotlin = "1.8.0"
     const val kotlinxCoroutines = "1.6.4"
     const val kotlinxSerialization = "1.4.1"
-    const val material = "1.6.1"
-    const val koin = "3.2.2"
+    const val material = "1.8.0"
+    const val koin = "3.3.2"
 
     // test instrumentation
-    const val androidTestCore = "1.4.0"
+    const val androidTestCore = "1.5.0"
     const val karumiShot = "5.14.1"
 }
 

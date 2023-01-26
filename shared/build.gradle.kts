@@ -33,12 +33,12 @@ kotlin {
                 implementation(Libraries.material)
             }
         }
-        val androidTest by getting {
+        val androidUnitTest by getting {
             dependencies {
                 implementation(kotlin("test"))
             }
         }
-        val androidAndroidTest by getting {
+        val androidInstrumentedTest by getting {
             dependencies {
                 implementation(kotlin("test"))
                 implementation(TestLibraries.androidTestRunner)

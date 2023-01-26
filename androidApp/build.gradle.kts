@@ -5,6 +5,7 @@ plugins {
 }
 
 android {
+    namespace = "siarhei.luskanau.kmm.android"
     compileSdk = BuildVersions.compileSdkVersion
     buildToolsVersion = BuildVersions.buildToolsVersion
     defaultConfig {
