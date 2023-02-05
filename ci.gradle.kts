@@ -39,8 +39,9 @@ tasks.register("ciEmulator") {
     group = CI_GRADLE
     doLast {
         mutableListOf(
-            ":androidApp:executeScreenshotTests"
-            // "-PdirectorySuffix=$directorySuffix",
+            "managedVirtualDeviceCheck",
+            "-Pandroid.testoptions.manageddevices.emulator.gpu=swiftshader_indirect"
+            // ":androidApp:executeScreenshotTests"
         ).also {
             if (System.getenv("CI").isNullOrEmpty()) it.add("-Precord")
         }.also {

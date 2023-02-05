@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.ManagedVirtualDevice
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -32,8 +34,16 @@ android {
                 )
             }
         }
+        animationsDisabled = true
+        emulatorSnapshots {
+            enableForTestFailures = false
+        }
+        managedDevices.devices.create<ManagedVirtualDevice>("managedVirtualDevice") {
+            device = "Pixel 2"
+            apiLevel = 33
+        }
     }
-    packagingOptions.excludes.addAll(
+    packagingOptions.resources.excludes.addAll(
         listOf(
             "META-INF/AL2.0",
             "META-INF/LGPL2.1"

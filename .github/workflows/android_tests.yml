@@ -19,16 +19,7 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
-      - uses: ReactiveCircus/android-emulator-runner@v2
-        with:
-          api-level: 30
-          target: aosp_atd
-          arch: x86
-          profile: Nexus 6
-          channel: canary
-          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          disable-animations: true
-          script: ./gradlew ciEmulator
+      - run: bash ./gradlew managedVirtualDeviceCheck -Pandroid.testoptions.manageddevices.emulator.gpu=swiftshader_indirect --stacktrace
 
       - uses: actions/upload-artifact@v3
         if: always()
