@@ -1,0 +1,48 @@
+[versions]
+
+kotlin = "1.8.20-Beta"
+kotlinxCoroutines = "1.6.4"
+kotlinxSerialization = "1.4.1"
+material = "1.8.0"
+koin = "3.3.2"
+
+# test instrumentation
+androidTestCore = "1.5.0"
+karumiShot = "5.14.1"
+
+# plugins
+androidToolsBuildGradle = "8.0.0-beta03"
+ktlint = "0.48.2"
+detekt = "1.22.0"
+kover = "0.6.1"
+
+# BuildVersions
+platformVersion = "33"
+compileSdkVersion = "33"
+targetSdkVersion = "33"
+buildToolsVersion = "34.0.0-rc1"
+minSdkVersion = "23"
+
+[libraries]
+
+kotlinxCoroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+koinAndroid = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koinCore = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+
+# TestLibraries
+androidTestRunner = { module = "androidx.test:runner", version.ref = "androidTestCore" }
+androidTestCoreKtx = { module = "androidx.test:core-ktx", version.ref = "androidTestCore" }
+
+#plugins
+karumiShotPlugin = { module = "com.karumi:shot", version.ref = "karumiShot" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidToolsBuildGradle" }
+android-library = { id = "com.android.library", version.ref = "androidToolsBuildGradle" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }

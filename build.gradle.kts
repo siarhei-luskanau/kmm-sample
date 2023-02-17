@@ -1,29 +1,23 @@
 buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
     dependencies {
-        classpath(GradlePlugin.kotlinGradlePlugin)
-        classpath(GradlePlugin.androidToolsBuildGradle)
-        classpath(GradlePlugin.kotlinSerializationPlugin)
-        classpath(GradlePlugin.karumiShotPlugin)
+        classpath(libs.karumiShotPlugin)
     }
 }
 
 plugins {
-    id("io.gitlab.arturbosch.detekt") version PublicVersions.detekt
-    id("org.jetbrains.kotlinx.kover") version PublicVersions.kover
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.multiplatform) apply false
+    alias(libs.plugins.kotlin.plugin.serialization) apply false
+    alias(libs.plugins.detekt) apply false
+    alias(libs.plugins.kover)
 }
 
 apply(from = "$rootDir/ci.gradle.kts")
+apply(from = "$rootDir/ktlint.gradle.kts")
 
 allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    apply(from = "$rootDir/ktlint.gradle.kts")
     apply(plugin = "io.gitlab.arturbosch.detekt")
 }
 

@@ -1,3 +1,5 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
 plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization")
@@ -18,9 +20,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(Libraries.kotlinxCoroutinesCore)
-                implementation(Libraries.kotlinxSerializationJson)
-                implementation(Libraries.koinCore)
+                implementation(libs.kotlinxCoroutinesCore)
+                implementation(libs.kotlinxSerializationJson)
+                implementation(libs.koinCore)
             }
         }
         val commonTest by getting {
@@ -30,7 +32,7 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementation(Libraries.material)
+                implementation(libs.material)
             }
         }
         val androidUnitTest by getting {
@@ -41,8 +43,8 @@ kotlin {
         val androidInstrumentedTest by getting {
             dependencies {
                 implementation(kotlin("test"))
-                implementation(TestLibraries.androidTestRunner)
-                implementation(TestLibraries.androidTestCoreKtx)
+                implementation(libs.androidTestRunner)
+                implementation(libs.androidTestCoreKtx)
             }
         }
         val iosMain by getting
@@ -60,17 +62,21 @@ tasks.withType(AbstractTestTask::class.java) {
 }
 
 android {
-    compileSdk = BuildVersions.compileSdkVersion
-    buildToolsVersion = BuildVersions.buildToolsVersion
+    namespace = "siarhei.luskanau.kmm.shared"
+    compileSdk = libs.versions.compileSdkVersion.get().toInt()
+    buildToolsVersion = libs.versions.buildToolsVersion.get()
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdk = BuildVersions.minSdkVersion
-        targetSdk = BuildVersions.targetSdkVersion
+        minSdk = libs.versions.minSdkVersion.get().toInt()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
         }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }

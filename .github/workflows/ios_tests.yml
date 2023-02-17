@@ -13,8 +13,10 @@ jobs:
 
       - uses: actions/setup-java@v3
         with:
-          distribution: 'adopt'
-          java-version: '11'
+          distribution: 'temurin'
+          java-version: '17'
+
+      - uses: android-actions/setup-android@v2
 
       - run: xcodebuild -project "iosApp/iosApp.xcodeproj" -scheme iosApp test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8' | xcpretty
 

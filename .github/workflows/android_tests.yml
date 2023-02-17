@@ -16,8 +16,10 @@ jobs:
 
       - uses: actions/setup-java@v3
         with:
-          distribution: 'adopt'
-          java-version: '11'
+          distribution: 'temurin'
+          java-version: '17'
+
+      - uses: android-actions/setup-android@v2
 
       - run: bash ./gradlew managedVirtualDeviceCheck -Pandroid.testoptions.manageddevices.emulator.gpu=swiftshader_indirect --stacktrace
 

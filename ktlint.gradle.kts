@@ -1,7 +1,7 @@
 val ktlint by configurations.creating
 
 dependencies {
-    ktlint("com.pinterest:ktlint:${PublicVersions.ktlint}") {
+    ktlint("com.pinterest:ktlint:${libs.versions.ktlint.get()}") {
         attributes {
             attribute(Bundling.BUNDLING_ATTRIBUTE, objects.named(Bundling.EXTERNAL))
         }
@@ -20,30 +20,17 @@ val inputFiles = project.fileTree(
 val ktlintCheck by tasks.creating(JavaExec::class) {
     inputs.files(inputFiles)
     outputs.dir(outputDir)
-    group = "ktlint"
     description = "Check Kotlin code style."
     classpath = ktlint
-    main = "com.pinterest.ktlint.Main"
+    mainClass.set("com.pinterest.ktlint.Main")
     args = listOf("--android", "**/src/**/*.kt", "**/src/**/*.kts", "*.kts")
 }
 
 val ktlintFormat by tasks.creating(JavaExec::class) {
     inputs.files(inputFiles)
     outputs.dir(outputDir)
-    group = "ktlint"
     description = "Fix Kotlin code style deviations."
     classpath = ktlint
-    main = "com.pinterest.ktlint.Main"
+    mainClass.set("com.pinterest.ktlint.Main")
     args = listOf("--android", "-F", "**/src/**/*.kt", "**/src/**/*.kts", "*.kts")
-}
-
-val applyToIDEAProject by tasks.creating(JavaExec::class) {
-    inputs.files(inputFiles)
-    outputs.dir(outputDir)
-    group = "ktlint"
-    description =
-        "Change the code style config files to be compliant with Android Kotlin Style Guide."
-    classpath = ktlint
-    main = "com.pinterest.ktlint.Main"
-    args = listOf("applyToIDEAProject", "-y")
 }

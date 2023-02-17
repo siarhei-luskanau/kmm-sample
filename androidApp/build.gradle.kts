@@ -8,11 +8,11 @@ plugins {
 
 android {
     namespace = "siarhei.luskanau.kmm.android"
-    compileSdk = BuildVersions.compileSdkVersion
-    buildToolsVersion = BuildVersions.buildToolsVersion
+    compileSdk = libs.versions.compileSdkVersion.get().toInt()
+    buildToolsVersion = libs.versions.buildToolsVersion.get()
     defaultConfig {
-        minSdk = BuildVersions.minSdkVersion
-        targetSdk = BuildVersions.targetSdkVersion
+        minSdk = libs.versions.minSdkVersion.get().toInt()
+        targetSdk = libs.versions.targetSdkVersion.get().toInt()
         applicationId = "siarhei.luskanau.kmm.android"
         testApplicationId = "siarhei.luskanau.kmm.android.test"
         versionCode = 1
@@ -49,16 +49,20 @@ android {
             "META-INF/LGPL2.1"
         )
     )
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
 }
 
 dependencies {
     implementation(project(":shared"))
-    implementation(Libraries.koinAndroid)
-    implementation(Libraries.material)
+    implementation(libs.koinAndroid)
+    implementation(libs.material)
 
     testImplementation(kotlin("test"))
 
     androidTestImplementation(kotlin("test"))
-    androidTestImplementation(TestLibraries.androidTestRunner)
-    androidTestImplementation(TestLibraries.androidTestCoreKtx)
+    androidTestImplementation(libs.androidTestRunner)
+    androidTestImplementation(libs.androidTestCoreKtx)
 }

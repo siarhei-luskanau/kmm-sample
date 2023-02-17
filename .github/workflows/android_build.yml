@@ -12,8 +12,10 @@ jobs:
 
       - uses: actions/setup-java@v3
         with:
-          distribution: 'adopt'
-          java-version: '11'
+          distribution: 'temurin'
+          java-version: '17'
+
+      - uses: android-actions/setup-android@v2
 
       - run: bash ./gradlew ciLint --stacktrace
 
@@ -30,8 +32,10 @@ jobs:
 
       - uses: actions/setup-java@v3
         with:
-          distribution: 'adopt'
-          java-version: '11'
+          distribution: 'temurin'
+          java-version: '17'
+
+      - uses: android-actions/setup-android@v2
 
       - run: bash ./gradlew ciUnitTest --stacktrace
 
@@ -48,8 +52,10 @@ jobs:
 
       - uses: actions/setup-java@v3
         with:
-          distribution: 'adopt'
-          java-version: '11'
+          distribution: 'temurin'
+          java-version: '17'
+
+      - uses: android-actions/setup-android@v2
 
       - run: bash ./gradlew ciBuildApp --stacktrace
 
