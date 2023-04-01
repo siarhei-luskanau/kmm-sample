@@ -38,15 +38,12 @@ tasks.register("ciBuildApp") {
 tasks.register("ciEmulator") {
     group = CI_GRADLE
     doLast {
-        mutableListOf(
+        gradlew(
             "managedVirtualDeviceCheck",
             "-Pandroid.testoptions.manageddevices.emulator.gpu=swiftshader_indirect"
-            // ":androidApp:executeScreenshotTests"
-        ).also {
-            if (System.getenv("CI").isNullOrEmpty()) it.add("-Precord")
-        }.also {
-            gradlew(*it.toTypedArray())
-        }
+        )
+        // gradlew("executeScreenshotTests", "-Precord")
+        gradlew("cleanManagedDevices")
     }
 }
 

@@ -1,8 +1,8 @@
 [versions]
 
-kotlin = "1.8.20-Beta"
+kotlin = "1.8.20"
 kotlinxCoroutines = "1.6.4"
-kotlinxSerialization = "1.4.1"
+kotlinxSerialization = "1.5.0"
 material = "1.8.0"
 koin = "3.3.2"
 
@@ -11,7 +11,7 @@ androidTestCore = "1.5.0"
 karumiShot = "5.14.1"
 
 # plugins
-androidToolsBuildGradle = "8.0.0-beta03"
+androidToolsBuildGradle = "8.0.0-rc01"
 ktlint = "0.48.2"
 detekt = "1.22.0"
 kover = "0.6.1"
@@ -20,7 +20,7 @@ kover = "0.6.1"
 platformVersion = "33"
 compileSdkVersion = "33"
 targetSdkVersion = "33"
-buildToolsVersion = "34.0.0-rc1"
+buildToolsVersion = "34.0.0-rc2"
 minSdkVersion = "23"
 
 [libraries]

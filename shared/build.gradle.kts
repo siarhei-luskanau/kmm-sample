@@ -1,5 +1,3 @@
-import org.apache.tools.ant.taskdefs.condition.Os
-
 plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization")
