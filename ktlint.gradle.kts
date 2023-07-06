@@ -1,36 +1,37 @@
 val ktlint by configurations.creating
 
 dependencies {
-    ktlint("com.pinterest:ktlint:0.48.2") {
+    ktlint("com.pinterest:ktlint:0.50.0") {
         attributes {
             attribute(Bundling.BUNDLING_ATTRIBUTE, objects.named(Bundling.EXTERNAL))
         }
     }
 }
 
-val outputDir = "${project.buildDir}/reports/ktlint/"
-val inputFiles = project.fileTree(
-    mapOf(
-        "dir" to "src",
-        "include" to "**/*.kt",
-        "include" to "**/*.kts"
-    )
-)
-
-val ktlintCheck by tasks.creating(JavaExec::class) {
-    inputs.files(inputFiles)
-    outputs.dir(outputDir)
-    description = "Check Kotlin code style."
+tasks.register<JavaExec>("ktlintCheck") {
+    group = LifecycleBasePlugin.VERIFICATION_GROUP
+    description = "Check Kotlin code style"
     classpath = ktlint
     mainClass.set("com.pinterest.ktlint.Main")
-    args = listOf("--android", "**/src/**/*.kt", "**/src/**/*.kts", "*.kts")
+    // see https://pinterest.github.io/ktlint/install/cli/#command-line-usage for more information
+    args(
+        "**/src/**/*.kt",
+        "**.kts",
+        "!**/build/**",
+    )
 }
 
-val ktlintFormat by tasks.creating(JavaExec::class) {
-    inputs.files(inputFiles)
-    outputs.dir(outputDir)
-    description = "Fix Kotlin code style deviations."
+tasks.register<JavaExec>("ktlintFormat") {
+    group = LifecycleBasePlugin.VERIFICATION_GROUP
+    description = "Check Kotlin code style and format"
     classpath = ktlint
     mainClass.set("com.pinterest.ktlint.Main")
-    args = listOf("--android", "-F", "**/src/**/*.kt", "**/src/**/*.kts", "*.kts")
+    jvmArgs("--add-opens=java.base/java.lang=ALL-UNNAMED")
+    // see https://pinterest.github.io/ktlint/install/cli/#command-line-usage for more information
+    args(
+        "-F",
+        "**/src/**/*.kt",
+        "**.kts",
+        "!**/build/**",
+    )
 }

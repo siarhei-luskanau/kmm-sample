@@ -6,7 +6,7 @@ import siarhei.luskanau.kmm.shared.parse
 
 class ProjectService(
     private val resourceReader: ResourceReader,
-    private val jsonParser: JsonParser
+    private val jsonParser: JsonParser,
 ) {
 
     fun getProject(): Project? =

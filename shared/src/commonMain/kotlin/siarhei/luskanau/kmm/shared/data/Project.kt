@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Project(
     @SerialName("name") val name: String,
-    @SerialName("language") val language: String
+    @SerialName("language") val language: String,
 )

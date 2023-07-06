@@ -9,7 +9,7 @@ tasks.register("ciLint") {
             "clean",
             "ktlintCheck",
             "detekt",
-            "lintDebug"
+            "lintDebug",
         )
     }
 }
@@ -20,7 +20,8 @@ tasks.register("ciUnitTest") {
         gradlew(
             "clean",
             "koverVerify",
-            "koverReport"
+            "koverXmlReport",
+            "koverHtmlReport",
         )
     }
 }
@@ -30,7 +31,7 @@ tasks.register("ciBuildApp") {
     doLast {
         gradlew(
             "clean",
-            "assembleDebug"
+            "assembleDebug",
         )
     }
 }
@@ -51,7 +52,7 @@ fun gradlew(vararg tasks: String, addToEnvironment: Map<String, String>? = null)
     exec {
         val gradlePath = File(
             project.rootDir,
-            platformExecutable(name = "gradlew", ext = "bat")
+            platformExecutable(name = "gradlew", ext = "bat"),
         ).absolutePath
         commandLine = mutableListOf<String>().apply {
             add(gradlePath)

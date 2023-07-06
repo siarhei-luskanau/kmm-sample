@@ -1,25 +1,25 @@
 [versions]
 
-kotlin = "1.8.20"
-kotlinxCoroutines = "1.6.4"
-kotlinxSerialization = "1.5.0"
-material = "1.8.0"
-koin = "3.4.0"
+kotlin = "1.9.0"
+kotlinxCoroutines = "1.7.2"
+kotlinxSerialization = "1.5.1"
+material = "1.9.0"
+koin = "3.4.2"
 
 # test instrumentation
 androidTestCore = "1.5.0"
+androidTestRunner = "1.5.2"
 karumiShot = "5.14.1"
 
 # plugins
-androidToolsBuildGradle = "8.0.0"
-detekt = "1.22.0"
-kover = "0.6.1"
+androidToolsBuildGradle = "8.0.2"
+detekt = "1.23.0"
+kover = "0.7.2"
 
 # BuildVersions
 platformVersion = "33"
 compileSdkVersion = "33"
 targetSdkVersion = "33"
-buildToolsVersion = "34.0.0-rc3"
 minSdkVersion = "23"
 
 [libraries]
@@ -31,8 +31,8 @@ koinAndroid = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koinCore = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 
 # TestLibraries
-androidTestRunner = { module = "androidx.test:runner", version.ref = "androidTestCore" }
 androidTestCoreKtx = { module = "androidx.test:core-ktx", version.ref = "androidTestCore" }
+androidTestRunner = { module = "androidx.test:runner", version.ref = "androidTestRunner" }
 
 #plugins
 karumiShotPlugin = { module = "com.karumi:shot", version.ref = "karumiShot" }

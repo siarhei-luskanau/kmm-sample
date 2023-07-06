@@ -55,14 +55,13 @@ tasks.withType(AbstractTestTask::class.java) {
     testLogging.events = setOf(
         org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED,
         org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED,
-        org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
+        org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED,
     )
 }
 
 android {
     namespace = "siarhei.luskanau.kmm.shared"
     compileSdk = libs.versions.compileSdkVersion.get().toInt()
-    buildToolsVersion = libs.versions.buildToolsVersion.get()
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = libs.versions.minSdkVersion.get().toInt()

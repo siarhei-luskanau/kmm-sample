@@ -16,7 +16,7 @@ class SharedAndroidAndroidTest {
             expected = "{\n" +
                 "  \"test-key\": \"test-value\"\n" +
                 "}\n",
-            actual = actual
+            actual = actual,
         )
     }
 

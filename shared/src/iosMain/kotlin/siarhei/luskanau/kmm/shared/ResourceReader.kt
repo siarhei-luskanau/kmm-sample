@@ -7,7 +7,7 @@ import platform.Foundation.NSUTF8StringEncoding
 import platform.Foundation.create
 
 actual class ResourceReader(
-    val bundle: NSBundle
+    val bundle: NSBundle,
 ) {
 
     actual fun readResource(name: String): String? =

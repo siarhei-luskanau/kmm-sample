@@ -7,7 +7,7 @@ import siarhei.luskanau.kmm.shared.ResourceReader
 actual val platformModule: Module = module {
     single {
         ResourceReader(
-            context = get()
+            context = get(),
         )
     }
 }
