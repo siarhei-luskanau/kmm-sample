@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.ManagedVirtualDevice
+
 plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization")
@@ -7,7 +9,7 @@ plugins {
 version = "1.0.0"
 
 kotlin {
-    android()
+    androidTarget()
     ios {
         binaries {
             framework {
@@ -61,10 +63,10 @@ tasks.withType(AbstractTestTask::class.java) {
 
 android {
     namespace = "siarhei.luskanau.kmm.shared"
-    compileSdk = libs.versions.compileSdkVersion.get().toInt()
+    compileSdk = libs.versions.android.build.compileSdk.get().toInt()
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdk = libs.versions.minSdkVersion.get().toInt()
+        minSdk = libs.versions.android.build.minSdk.get().toInt()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -73,7 +75,26 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.valueOf(libs.versions.build.javaVersion.get())
+        targetCompatibility = JavaVersion.valueOf(libs.versions.build.javaVersion.get())
+    }
+    testOptions {
+        unitTests {
+            all { test: Test ->
+                test.testLogging.events = setOf(
+                    org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED,
+                    org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED,
+                    org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED,
+                )
+            }
+        }
+        animationsDisabled = true
+        emulatorSnapshots {
+            enableForTestFailures = false
+        }
+        managedDevices.devices.create<ManagedVirtualDevice>("managedVirtualDevice") {
+            device = "Pixel 2"
+            apiLevel = 33
+        }
     }
 }

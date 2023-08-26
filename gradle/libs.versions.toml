@@ -1,47 +1,36 @@
 [versions]
-
-kotlin = "1.9.0"
-kotlinxCoroutines = "1.7.2"
-kotlinxSerialization = "1.5.1"
-material = "1.9.0"
-koin = "3.4.2"
-
-# test instrumentation
+agp = "8.1.1"
+android-build-compileSdk = "34"
+android-build-minSdk = "26"
+android-build-targetSdk = "34"
 androidTestCore = "1.5.0"
 androidTestRunner = "1.5.2"
-karumiShot = "5.14.1"
-
-# plugins
-androidToolsBuildGradle = "8.0.2"
-detekt = "1.23.0"
-kover = "0.7.2"
-
-# BuildVersions
-platformVersion = "33"
-compileSdkVersion = "33"
-targetSdkVersion = "33"
-minSdkVersion = "23"
+build-javaVersion = "VERSION_17"
+build-jvmTarget = "17"
+detekt = "1.23.1"
+karumiShot = "6.0.0"
+koin = "3.4.3"
+kotlin = "1.9.10"
+kotlinxCoroutines = "1.7.3"
+kotlinxSerialization = "1.6.0"
+kover = "0.7.3"
+material = "1.9.0"
 
 [libraries]
-
+androidTestCoreKtx = { module = "androidx.test:core-ktx", version.ref = "androidTestCore" }
+androidTestRunner = { module = "androidx.test:runner", version.ref = "androidTestRunner" }
+karumiShotPlugin = { module = "com.karumi:shot", version.ref = "karumiShot" }
+koinAndroid = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koinCore = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 kotlinxCoroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
-koinAndroid = { module = "io.insert-koin:koin-android", version.ref = "koin" }
-koinCore = { module = "io.insert-koin:koin-core", version.ref = "koin" }
-
-# TestLibraries
-androidTestCoreKtx = { module = "androidx.test:core-ktx", version.ref = "androidTestCore" }
-androidTestRunner = { module = "androidx.test:runner", version.ref = "androidTestRunner" }
-
-#plugins
-karumiShotPlugin = { module = "com.karumi:shot", version.ref = "karumiShot" }
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "androidToolsBuildGradle" }
-android-library = { id = "com.android.library", version.ref = "androidToolsBuildGradle" }
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }

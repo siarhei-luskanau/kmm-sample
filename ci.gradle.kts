@@ -1,4 +1,5 @@
 import org.apache.tools.ant.taskdefs.condition.Os
+import java.util.Properties
 
 val CI_GRADLE = "CI_GRADLE"
 
@@ -39,36 +40,60 @@ tasks.register("ciBuildApp") {
 tasks.register("ciEmulator") {
     group = CI_GRADLE
     doLast {
-        gradlew("executeScreenshotTests", "-Precord")
-        // gradlew(
-        //     "managedVirtualDeviceCheck",
-        //     "-Pandroid.testoptions.manageddevices.emulator.gpu=swiftshader_indirect"
-        // )
-        // gradlew("cleanManagedDevices")
+        // gradlew("executeScreenshotTests", "-Precord")
+        gradlew(
+            "managedVirtualDeviceCheck",
+            "-Pandroid.testoptions.manageddevices.emulator.gpu=swiftshader_indirect",
+        )
+        gradlew("cleanManagedDevices")
     }
 }
 
-fun gradlew(vararg tasks: String, addToEnvironment: Map<String, String>? = null) {
+fun gradlew(
+    vararg tasks: String,
+    addToSystemProperties: Map<String, String>? = null,
+) {
     exec {
-        val gradlePath = File(
+        executable = File(
             project.rootDir,
-            platformExecutable(name = "gradlew", ext = "bat"),
-        ).absolutePath
-        commandLine = mutableListOf<String>().apply {
-            add(gradlePath)
-            addAll(tasks)
-            add("--stacktrace")
+            if (Os.isFamily(Os.FAMILY_WINDOWS)) "gradlew.bat" else "gradlew",
+        )
+            .also { it.setExecutable(true) }
+            .absolutePath
+        args = mutableListOf<String>().also { mutableArgs ->
+            mutableArgs.addAll(tasks)
+            addToSystemProperties?.toList()?.map { "-D${it.first}=${it.second}" }?.let {
+                mutableArgs.addAll(it)
+            }
+            mutableArgs.add("--stacktrace")
         }
-        addToEnvironment?.let {
-            environment = environment.orEmpty().toMutableMap().apply { putAll(it) }
+        val sdkDirPath = Properties().apply {
+            val propertiesFile = File(rootDir, "local.properties")
+            if (propertiesFile.exists()) {
+                load(propertiesFile.inputStream())
+            }
+        }.getProperty("sdk.dir")
+        if (sdkDirPath != null) {
+            val platformToolsDir = "$sdkDirPath${java.io.File.separator}platform-tools"
+            val pahtEnvironment = System.getenv("PATH").orEmpty()
+            if (!pahtEnvironment.contains(platformToolsDir)) {
+                environment = environment.toMutableMap().apply {
+                    put("PATH", "$platformToolsDir:$pahtEnvironment")
+                }
+            }
+        }
+        if (System.getenv("JAVA_HOME") == null) {
+            System.getProperty("java.home")?.let { javaHome ->
+                environment = environment.toMutableMap().apply {
+                    put("JAVA_HOME", javaHome)
+                }
+            }
+        }
+        if (System.getenv("ANDROID_HOME") == null) {
+            environment = environment.toMutableMap().apply {
+                put("ANDROID_HOME", "$sdkDirPath")
+            }
         }
         println("commandLine: ${this.commandLine}")
     }.apply { println("ExecResult: $this") }
 }
-
-fun platformExecutable(name: String, ext: String = "exe"): String =
-    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-        "$name.$ext"
-    } else {
-        name
-    }

@@ -8,10 +8,10 @@ plugins {
 
 android {
     namespace = "siarhei.luskanau.kmm.android"
-    compileSdk = libs.versions.compileSdkVersion.get().toInt()
+    compileSdk = libs.versions.android.build.compileSdk.get().toInt()
     defaultConfig {
-        minSdk = libs.versions.minSdkVersion.get().toInt()
-        targetSdk = libs.versions.targetSdkVersion.get().toInt()
+        minSdk = libs.versions.android.build.minSdk.get().toInt()
+        targetSdk = libs.versions.android.build.targetSdk.get().toInt()
         applicationId = "siarhei.luskanau.kmm.android"
         testApplicationId = "siarhei.luskanau.kmm.android.test"
         versionCode = 1
@@ -49,11 +49,11 @@ android {
         ),
     )
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.valueOf(libs.versions.build.javaVersion.get())
+        targetCompatibility = JavaVersion.valueOf(libs.versions.build.javaVersion.get())
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = libs.versions.build.jvmTarget.get()
     }
 }
 
