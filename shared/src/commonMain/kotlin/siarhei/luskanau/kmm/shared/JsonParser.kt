@@ -9,10 +9,7 @@ class JsonParser {
 
     private val parser = Json { ignoreUnknownKeys = true }
 
-    fun <T : Any> parseBySerializer(
-        json: String,
-        serializer: KSerializer<T>,
-    ): T =
+    fun <T : Any> parseBySerializer(json: String, serializer: KSerializer<T>): T =
         parser.decodeFromString(serializer, json)
 }
 

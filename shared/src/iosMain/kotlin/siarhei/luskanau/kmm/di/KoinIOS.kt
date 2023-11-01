@@ -11,16 +11,14 @@ import org.koin.dsl.module
 import platform.Foundation.NSBundle
 import siarhei.luskanau.kmm.shared.ResourceReader
 
-fun initKoinIos(
-    bundle: NSBundle,
-): KoinApplication = initKoin(
+fun initKoinIos(bundle: NSBundle): KoinApplication = initKoin(
     module {
         single {
             ResourceReader(
-                bundle = bundle,
+                bundle = bundle
             )
         }
-    },
+    }
 )
 
 actual val platformModule: Module = module {

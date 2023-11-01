@@ -7,14 +7,13 @@ import org.koin.dsl.module
 import siarhei.luskanau.kmm.shared.JsonParser
 import siarhei.luskanau.kmm.shared.data.ProjectService
 
-fun initKoin(appModule: Module): KoinApplication =
-    startKoin {
-        modules(
-            appModule,
-            sharedCommonModule,
-            platformModule,
-        )
-    }
+fun initKoin(appModule: Module): KoinApplication = startKoin {
+    modules(
+        appModule,
+        sharedCommonModule,
+        platformModule
+    )
+}
 
 val sharedCommonModule = module {
     single {
@@ -24,7 +23,7 @@ val sharedCommonModule = module {
     single {
         ProjectService(
             resourceReader = get(),
-            jsonParser = get(),
+            jsonParser = get()
         )
     }
 }

@@ -13,7 +13,7 @@ class MainApp : Application() {
         initKoin(
             module {
                 single<Context> { this@MainApp }
-            },
+            }
         )
         StrictMode.setThreadPolicy(
             StrictMode.ThreadPolicy.Builder()
@@ -21,7 +21,7 @@ class MainApp : Application() {
                 .detectDiskWrites()
                 .detectNetwork()
                 .penaltyLog()
-                .build(),
+                .build()
         )
         StrictMode.setVmPolicy(
             StrictMode.VmPolicy.Builder()
@@ -29,7 +29,7 @@ class MainApp : Application() {
                 .detectLeakedClosableObjects()
                 .penaltyLog()
                 .penaltyDeath()
-                .build(),
+                .build()
         )
     }
 }

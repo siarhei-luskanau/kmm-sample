@@ -29,7 +29,7 @@ android {
                 test.testLogging.events = setOf(
                     org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED,
                     org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED,
-                    org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED,
+                    org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
                 )
             }
         }
@@ -45,8 +45,8 @@ android {
     packagingOptions.resources.excludes.addAll(
         listOf(
             "META-INF/AL2.0",
-            "META-INF/LGPL2.1",
-        ),
+            "META-INF/LGPL2.1"
+        )
     )
     compileOptions {
         sourceCompatibility = JavaVersion.valueOf(libs.versions.build.javaVersion.get())

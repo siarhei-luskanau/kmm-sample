@@ -1,62 +1,59 @@
-import org.apache.tools.ant.taskdefs.condition.Os
 import java.util.Properties
+import org.apache.tools.ant.taskdefs.condition.Os
 
-val CI_GRADLE = "CI_GRADLE"
+val ciGradleGroup = "CI_GRADLE"
 
 tasks.register("ciLint") {
-    group = CI_GRADLE
+    group = ciGradleGroup
     doLast {
         gradlew(
             "clean",
             "ktlintCheck",
             "detekt",
-            "lintDebug",
+            "lintDebug"
         )
     }
 }
 
 tasks.register("ciUnitTest") {
-    group = CI_GRADLE
+    group = ciGradleGroup
     doLast {
         gradlew(
             "clean",
             "koverVerify",
             "koverXmlReport",
-            "koverHtmlReport",
+            "koverHtmlReport"
         )
     }
 }
 
 tasks.register("ciBuildApp") {
-    group = CI_GRADLE
+    group = ciGradleGroup
     doLast {
         gradlew(
             "clean",
-            "assembleDebug",
+            "assembleDebug"
         )
     }
 }
 
 tasks.register("ciEmulator") {
-    group = CI_GRADLE
+    group = ciGradleGroup
     doLast {
         // gradlew("executeScreenshotTests", "-Precord")
         gradlew(
             "managedVirtualDeviceCheck",
-            "-Pandroid.testoptions.manageddevices.emulator.gpu=swiftshader_indirect",
+            "-Pandroid.testoptions.manageddevices.emulator.gpu=swiftshader_indirect"
         )
         gradlew("cleanManagedDevices")
     }
 }
 
-fun gradlew(
-    vararg tasks: String,
-    addToSystemProperties: Map<String, String>? = null,
-) {
+fun gradlew(vararg tasks: String, addToSystemProperties: Map<String, String>? = null) {
     exec {
         executable = File(
             project.rootDir,
-            if (Os.isFamily(Os.FAMILY_WINDOWS)) "gradlew.bat" else "gradlew",
+            if (Os.isFamily(Os.FAMILY_WINDOWS)) "gradlew.bat" else "gradlew"
         )
             .also { it.setExecutable(true) }
             .absolutePath

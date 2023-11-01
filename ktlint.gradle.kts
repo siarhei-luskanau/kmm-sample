@@ -1,7 +1,7 @@
 val ktlint by configurations.creating
 
 dependencies {
-    ktlint("com.pinterest:ktlint:0.50.0") {
+    ktlint("com.pinterest.ktlint:ktlint-cli:1.0.1") {
         attributes {
             attribute(Bundling.BUNDLING_ATTRIBUTE, objects.named(Bundling.EXTERNAL))
         }
@@ -17,7 +17,7 @@ tasks.register<JavaExec>("ktlintCheck") {
     args(
         "**/src/**/*.kt",
         "**.kts",
-        "!**/build/**",
+        "!**/build/**"
     )
 }
 
@@ -32,6 +32,6 @@ tasks.register<JavaExec>("ktlintFormat") {
         "-F",
         "**/src/**/*.kt",
         "**.kts",
-        "!**/build/**",
+        "!**/build/**"
     )
 }

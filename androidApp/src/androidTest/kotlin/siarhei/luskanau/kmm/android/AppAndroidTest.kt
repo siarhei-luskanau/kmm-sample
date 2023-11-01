@@ -4,9 +4,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.ActivityScenario
 import androidx.test.platform.app.InstrumentationRegistry
 import com.karumi.shot.ScreenshotTest
-import siarhei.luskanau.kmm.shared.Calculator
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import siarhei.luskanau.kmm.shared.Calculator
 
 class AppAndroidTest : ScreenshotTest {
 
@@ -28,7 +28,7 @@ class AppAndroidTest : ScreenshotTest {
         scenario.onActivity {
             compareScreenshot(
                 activity = it,
-                name = javaClass.simpleName,
+                name = javaClass.simpleName
             )
         }
     }
