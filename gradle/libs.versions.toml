@@ -1,5 +1,5 @@
 [versions]
-agp = "8.1.2"
+agp = "8.1.3"
 android-build-compileSdk = "34"
 android-build-minSdk = "26"
 android-build-targetSdk = "34"
@@ -10,9 +10,9 @@ build-jvmTarget = "17"
 detekt = "1.23.1"
 karumiShot = "6.0.0"
 koin = "3.5.0"
-kotlin = "1.9.20"
+kotlin = "2.0.0-Beta1"
 kotlinxCoroutines = "1.7.3"
-kotlinxSerialization = "1.6.0"
+kotlinxSerialization = "1.6.1"
 kover = "0.7.4"
 material = "1.10.0"
 
