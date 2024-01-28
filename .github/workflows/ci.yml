@@ -16,7 +16,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - uses: android-actions/setup-android@v2
+      - uses: android-actions/setup-android@v3
 
       - run: bash ./gradlew ciLint --stacktrace
 
@@ -36,7 +36,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - uses: android-actions/setup-android@v2
+      - uses: android-actions/setup-android@v3
 
       - run: bash ./gradlew ciUnitTest --stacktrace
 
@@ -56,7 +56,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - uses: android-actions/setup-android@v2
+      - uses: android-actions/setup-android@v3
 
       - run: bash ./gradlew ciBuildApp --stacktrace
 
@@ -86,7 +86,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - uses: android-actions/setup-android@v2
+      - uses: android-actions/setup-android@v3
 
       - run: bash ./gradlew ciEmulator --stacktrace
 
@@ -109,7 +109,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - uses: android-actions/setup-android@v2
+      - uses: android-actions/setup-android@v3
 
       - run: xcodebuild -project "iosApp/iosApp.xcodeproj" -scheme iosApp test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12'
 
