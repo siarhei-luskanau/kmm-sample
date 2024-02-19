@@ -14,7 +14,7 @@ kotlin = "2.0.0-Beta3"
 kotlinxCoroutines = "1.7.3"
 kotlinxSerialization = "1.6.2"
 kover = "0.7.5"
-material = "1.10.0"
+material = "1.11.0"
 
 [libraries]
 androidTestCoreKtx = { module = "androidx.test:core-ktx", version.ref = "androidTestCore" }
