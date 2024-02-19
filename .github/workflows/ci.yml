@@ -60,14 +60,6 @@ jobs:
 
       - run: bash ./gradlew ciBuildApp --stacktrace
 
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: apk_aar
-          path: |
-            **/*.apk
-            **/*.aar
-
 
 
 
