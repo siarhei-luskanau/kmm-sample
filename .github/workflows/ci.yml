@@ -2,6 +2,9 @@ name: CI
 
 on: [ push ]
 
+env:
+  JAVA_VERSION: 20
+
 jobs:
 
 
@@ -14,7 +17,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: ${{ env.JAVA_VERSION }}
 
       - uses: android-actions/setup-android@v3
 
@@ -34,7 +37,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: ${{ env.JAVA_VERSION }}
 
       - uses: android-actions/setup-android@v3
 
@@ -54,7 +57,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: ${{ env.JAVA_VERSION }}
 
       - uses: android-actions/setup-android@v3
 
@@ -68,15 +71,22 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macos-latest ]
+        os: [ macos-latest, ubuntu-latest ]
     steps:
 
       - uses: actions/checkout@v4
 
+      - name: Enable KVM group perms
+        if: contains(matrix.os, 'ubuntu')
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: ${{ env.JAVA_VERSION }}
 
       - uses: android-actions/setup-android@v3
 
@@ -90,7 +100,7 @@ jobs:
 
 
   jobIosTests:
-    runs-on: macos-11
+    runs-on: macos-latest
 
     steps:
 
@@ -99,7 +109,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: ${{ env.JAVA_VERSION }}
 
       - uses: android-actions/setup-android@v3
 

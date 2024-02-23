@@ -9,7 +9,14 @@ plugins {
 version = "1.0.0"
 
 kotlin {
-    androidTarget()
+    androidTarget {
+        compilations.configureEach {
+            kotlinOptions {
+                jvmTarget = libs.versions.build.jvmTarget.get()
+            }
+        }
+    }
+
     ios {
         binaries {
             framework {
